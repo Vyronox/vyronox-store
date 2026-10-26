@@ -49,7 +49,7 @@ nav button:hover,.mnav button:hover{color:var(--text)}
 .grid{display:grid;gap:16px;grid-template-columns:1fr}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
 .card:hover{border-color:#27406e}
-.art{height:150px;display:block;width:100%}
+.art{height:170px;display:block;width:100%;object-fit:cover;background:#0a1226}
 .cb{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
 .cb h3{font-size:1.05rem}
 .cb p{margin:0;color:var(--mute);font-size:.92rem;flex:1}
@@ -127,19 +127,43 @@ const PRODUCTS = [
   { id: 17, title: "Instagram Gradient Backdrops", cat: CATEGORIES[3], price: 2, desc: "Branded backgrounds for posts and stories.", prompt: "Abstract gradient background flowing from electric blue to deep black, subtle grain texture, smooth glowing curves, large empty space in the centre for text, modern brand design, high resolution --ar 4:5" },
   { id: 18, title: "Product Launch Stage", cat: CATEGORIES[3], price: 5, desc: "Hero scenes for new product announcements.", prompt: "Product displayed on a reflective black pedestal, blue rim lighting, floating glowing particles, glossy floor reflection, premium tech launch visual, centred composition, dark background, sharp edges --ar 16:9" },
   { id: 19, title: "Cafe Brand Story", cat: CATEGORIES[3], price: 3, desc: "Warm lifestyle photos for local businesses.", prompt: "Cosy coffee shop interior, barista pouring latte art, warm window light, wooden counter, steam rising from cups, lifestyle brand photography, shallow depth of field, inviting mood, space for caption --ar 4:5" },
-  { id: 20, title: "Flat-Lay Workspace", cat: CATEGORIES[3], price: 3, desc: "Top-down desk scenes for creators.", prompt: "Top-down flat lay of a tidy desk with laptop, notebook, coffee cup and small plant, soft daylight, neutral beige and black palette, organised composition, clean shadows, social media content style --ar 1:1" }
+  { id: 20, title: "Flat-Lay Workspace", cat: CATEGORIES[3], price: 3, desc: "Top-down desk scenes for creators.", prompt: "Top-down flat lay of a tidy desk with laptop, notebook, coffee cup and small plant, soft daylight, neutral beige and black palette, organised composition, clean shadows, social media content style --ar 1:1" },
+  /* More AI Photography */
+  { id: 21, title: "Northern Lights Lake", cat: CATEGORIES[0], price: 4, desc: "Green aurora over a still mountain lake.", prompt: "Northern lights glowing green and violet above a perfectly still mountain lake, snow-capped peaks, a tiny lit tent on the shore, star-filled sky, long exposure look, mirror reflection, ultra-sharp, 14mm wide angle --ar 16:9" },
+  { id: 22, title: "Night Market Street Food", cat: CATEGORIES[0], price: 3, desc: "Busy food stalls with steam and warm lights.", prompt: "Busy night market street food stall, chef flipping noodles in a flaming wok, steam and sparks, string lights overhead, crowd blurred in the background, warm orange glow, 35mm documentary style, rich detail --ar 3:2" },
+  { id: 23, title: "Snowy Cabin Window", cat: CATEGORIES[0], price: 3, desc: "Cosy winter cabin glowing in the snow.", prompt: "Small wooden cabin in a snowy pine forest at dusk, warm yellow light glowing from the windows, smoke rising from the chimney, falling snowflakes, deep blue shadows, cosy winter atmosphere, 35mm --ar 4:5" },
+  { id: 24, title: "Underwater Coral Light", cat: CATEGORIES[0], price: 4, desc: "Sunbeams through clear water over coral.", prompt: "Underwater photograph of a coral reef, sunbeams piercing clear turquoise water, colourful tropical fish, a diver silhouette in the distance, natural colours, high clarity, wide angle lens, National Geographic style --ar 16:9" },
+  { id: 25, title: "Rooftop City Sunset", cat: CATEGORIES[0], price: 3, desc: "Old city skyline in warm evening light.", prompt: "Old city rooftops at sunset, domes and minarets in golden light, birds flying across a peach and violet sky, soft haze, hanging laundry in the foreground, 70mm telephoto compression, warm nostalgic tones --ar 16:9" },
+  /* More Cinematic Portraits */
+  { id: 26, title: "Cyberpunk Neon Face", cat: CATEGORIES[1], price: 5, desc: "Futuristic portrait with coloured light.", prompt: "Close-up cyberpunk portrait, half face lit by electric blue neon and half by magenta, rain droplets on the skin, subtle glowing implant near the temple, dark city bokeh, 85mm f/1.2, ultra-detailed, cinematic sci-fi still --ar 2:3" },
+  { id: 27, title: "Warrior in Armour", cat: CATEGORIES[1], price: 4, desc: "Epic fantasy warrior in battle light.", prompt: "Battle-worn female warrior in dented silver armour, wind-blown hair, smoke and embers in the air behind her, golden backlight, determined stare, dramatic low angle, 50mm, epic fantasy movie poster feel --ar 2:3" },
+  { id: 28, title: "Craftsman Hands", cat: CATEGORIES[1], price: 3, desc: "Elderly artisan portrait with textured detail.", prompt: "Portrait of an elderly craftsman in his workshop, deep wrinkles, wise eyes, dusty hands holding a wooden tool, warm side light from a small window, rich textures, 85mm, documentary cinematic style --ar 4:5" },
+  { id: 29, title: "Spy Thriller Silhouette", cat: CATEGORIES[1], price: 4, desc: "Mysterious figure in a foggy station.", prompt: "Mysterious figure in a long coat standing in a foggy train station, backlit by a single overhead lamp, strong silhouette, steam drifting across the platform, cold green and amber tones, 40mm, tense thriller mood --ar 21:9" },
+  { id: 30, title: "Soft Window Morning", cat: CATEGORIES[1], price: 3, desc: "Gentle natural-light portrait at home.", prompt: "Natural light portrait of a young man by a sunlit window, sheer curtains glowing, soft shadows on his face, calm thoughtful expression, cream and warm grey palette, 85mm, shallow depth of field, quiet indie film look --ar 4:5" },
+  /* More Fashion */
+  { id: 31, title: "Bridal Garden Editorial", cat: CATEGORIES[2], price: 5, desc: "Romantic bridal look in a flower garden.", prompt: "Bridal editorial in a blooming garden, bride in an ivory gown with a long lace veil lifted by the breeze, soft pastel flowers, golden afternoon light, dreamy glow, 85mm, magazine cover quality --ar 2:3" },
+  { id: 32, title: "Sportswear Action Shot", cat: CATEGORIES[2], price: 4, desc: "Dynamic athletic wear campaign image.", prompt: "Athlete in black and electric blue sportswear mid-sprint on an empty track at dawn, frozen motion with sweat droplets, dramatic low angle, strong rim light, sharp muscle detail, sports brand campaign style --ar 4:5" },
+  { id: 33, title: "Luxury Watch Campaign", cat: CATEGORIES[2], price: 5, desc: "Premium watch advertising close-up.", prompt: "Luxury wristwatch on a wrist in a dark suit sleeve, polished steel catching a sharp highlight, tiny reflections on the sapphire glass, black background with a faint blue glow, macro detail, high-end advertising photography --ar 4:5" },
+  { id: 34, title: "Eastern Embroidered Wear", cat: CATEGORIES[2], price: 4, desc: "Elegant traditional outfits with rich detail.", prompt: "Model in an elegant emerald green shalwar kameez with detailed gold embroidery, long dupatta flowing in the wind, standing in front of a heritage arch, soft afternoon light, fashion editorial, fabric texture in sharp focus --ar 2:3" },
+  { id: 35, title: "Denim Studio Closeup", cat: CATEGORIES[2], price: 3, desc: "Textured denim fashion on plain backdrop.", prompt: "Close-up fashion shot of a model in a dark denim jacket with visible stitching and metal buttons, plain warm grey studio backdrop, hard directional light, crisp fabric texture, relaxed pose, catalogue style --ar 4:5" },
+  /* More Business and Social Media */
+  { id: 36, title: "Real Estate Interior Hero", cat: CATEGORIES[3], price: 4, desc: "Bright, inviting living room for listings.", prompt: "Bright modern living room interior, large windows with soft daylight, neutral sofa, wooden floor, a plant and a throw blanket, clean and spacious, wide angle real estate photography, straight vertical lines --ar 3:2" },
+  { id: 37, title: "Fitness Brand Banner", cat: CATEGORIES[3], price: 3, desc: "Bold gym banner with space for text.", prompt: "Dark gym interior, athlete lifting a barbell, dramatic spotlight with blue rim light, chalk dust in the air, strong contrast, empty space on the left for headline text, fitness brand banner --ar 16:9" },
+  { id: 38, title: "Skincare Flat Lay", cat: CATEGORIES[3], price: 4, desc: "Clean beauty product arrangement.", prompt: "Top-down flat lay of skincare bottles and a jar on a pale stone surface, water droplets, a green leaf shadow, soft diffused light, minimal beige palette, clean beauty brand style, plenty of negative space --ar 1:1" },
+  { id: 39, title: "Podcast Cover Art", cat: CATEGORIES[3], price: 3, desc: "Bold square cover for audio shows.", prompt: "Podcast cover art, bold stylised microphone in the centre, electric blue glow lines radiating outward, deep black background, subtle grain, modern minimal design, clear space at the bottom for the show title --ar 1:1" },
+  { id: 40, title: "Restaurant Hero Dish", cat: CATEGORIES[3], price: 4, desc: "Mouth-watering food for menus and posts.", prompt: "Gourmet burger on a dark wooden board, melted cheese dripping, steam rising, fresh herbs and fries blurred behind, warm side light, shallow depth of field, rich saturated colours, restaurant menu photography --ar 4:5" }
 ];
 
 const BUNDLES = [
-  { id: 101, title: "AI Photography Pack", price: 9, save: "Save 25%", items: ["5 photography prompts", "Camera and lens cheat sheet", "Free updates"] },
-  { id: 102, title: "Cinematic Portrait Pack", price: 12, save: "Save 30%", items: ["5 portrait prompts", "Lighting setup guide", "Free updates"] },
-  { id: 103, title: "Fashion and Business Pack", price: 22, save: "Save 35%", items: ["10 fashion and business prompts", "Brand style guide", "Free updates"] }
+  { id: 101, title: "AI Photography Pack", price: 15, save: "Save 30%", items: ["10 photography prompts", "Camera and lens cheat sheet", "Free updates"] },
+  { id: 102, title: "Cinematic Portrait Pack", price: 18, save: "Save 30%", items: ["10 portrait prompts", "Lighting setup guide", "Free updates"] },
+  { id: 103, title: "Fashion and Business Pack", price: 32, save: "Save 35%", items: ["20 fashion and business prompts", "Brand style guide", "Free updates"] }
 ];
 
 const PLANS = [
   { id: 201, name: "Single Prompt", price: 3, per: "per prompt", feats: ["1 full prompt", "Commercial use", "Instant copy"] },
-  { id: 202, name: "Category Bundle", price: 12, per: "per bundle", feats: ["5 prompts in one style", "Commercial use", "Free updates", "Priority support"], hot: true },
-  { id: 203, name: "All Access", price: 39, per: "one-time", feats: ["All 20 prompts and bundles", "Future releases", "Commercial use", "Priority support"] }
+  { id: 202, name: "Category Bundle", price: 15, per: "per bundle", feats: ["10 prompts in one style", "Commercial use", "Free updates", "Priority support"], hot: true },
+  { id: 203, name: "All Access", price: 49, per: "one-time", feats: ["All 40 prompts and bundles", "Future releases", "Commercial use", "Priority support"] }
 ];
 
 /* ---------- 3. SMALL COMPONENTS ---------- */
@@ -155,9 +179,16 @@ function Art({ cat, id }) {
   </svg>`;
 }
 
+/* Shows images/files named 1.jpg, 2.jpg ... (same number as the prompt id). Falls back to art if missing. */
+function Thumb({ p }) {
+  const [bad, setBad] = useState(false);
+  if (bad) return html`<${Art} cat=${p.cat} id=${p.id}/>`;
+  return html`<img className="art" src=${p.id + ".jpg"} alt=${p.title + " sample image"} loading="lazy" onError=${() => setBad(true)}/>`;
+}
+
 function Card({ p, onCopy, onAdd }) {
   return html`<article className="card">
-    <${Art} cat=${p.cat} id=${p.id}/>
+    <${Thumb} p=${p}/>
     <div className="cb">
       <span className="tag">${p.cat}</span>
       <h3>${p.title}</h3>
